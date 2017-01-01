@@ -46,3 +46,46 @@ raspi-conf
 
 2. Change the name of the pi
 3. Change the password for pi using `passwd`
+
+## Cross Compile from Ubuntu
+1. 
+
+   ```bash
+sudo apt-get install build-essential
+sudo apt-get install g++-arm-linux-gnueabihf
+sudo apt-get install gdb-multiarch
+   ```
+   
+2. 
+
+   ```bash
+arm-linux-gnueabihf-g++ -O3 -g3 -Wall -c -o -fPIC "h.o" "h.cpp"
+arm-linux-gnueabihf-g++ -o "hello" h.o
+   ```
+
+## Remote Debugging
+1. 
+
+   ```bash
+# on the PI
+sudo apt-get install gdbserver
+   ```
+
+2. 
+
+   ```bash
+# on the PI
+gdbserver --multi nameofpi:2001
+   ```
+   
+3. 
+
+   ```bash
+# on the laptop/desktop
+gdb-multiarch
+# in gdb on the laptop/desktop
+target extended-remote nameofpi.local:2001
+set remote exec-file pathincludingexe
+file exenamewithoutpath
+run
+   ```
