@@ -35,3 +35,14 @@ touch /boot/ssh
 8. Unmount the SD card
 9. Put the SD card into the PI
 10. Power up the PI
+
+## First Boot
+1. 
+
+   ```bash
+ssh pi@raspberrypi.local
+raspi-conf
+   ```
+
+2. Change the name of the pi
+3. Change the password for pi using `passwd`
